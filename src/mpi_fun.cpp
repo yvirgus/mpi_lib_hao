@@ -72,49 +72,49 @@ void MPIBcast(int N, double* buffer, int root, const MPI_Comm& comm )
 
 
 
-int MPISum(int& sendbuf, int root,  const MPI_Comm& comm)
+int MPISum(const int& sendbuf, int root,  const MPI_Comm& comm)
 {
  int recvbuf=0;
  MPI_Reduce(&sendbuf, &recvbuf, 1 , MPI_INT, MPI_SUM, root, comm);
  return recvbuf;
 }
 
-long MPISum(long& sendbuf, int root,  const MPI_Comm& comm)
+long MPISum(const long& sendbuf, int root,  const MPI_Comm& comm)
 {
  long recvbuf=0;
  MPI_Reduce(&sendbuf, &recvbuf, 1 , MPI_LONG, MPI_SUM, root, comm);
  return recvbuf;
 }
 
-long long MPISum(long long& sendbuf, int root,  const MPI_Comm& comm)
+long long MPISum(const long long& sendbuf, int root,  const MPI_Comm& comm)
 {
  long long recvbuf=0;
  MPI_Reduce(&sendbuf, &recvbuf, 1 , MPI_LONG_LONG, MPI_SUM, root, comm);
  return recvbuf;
 }
 
-float MPISum(float& sendbuf, int root,  const MPI_Comm& comm)
+float MPISum(const float& sendbuf, int root,  const MPI_Comm& comm)
 {
  float recvbuf=0;
  MPI_Reduce(&sendbuf, &recvbuf, 1 , MPI_FLOAT, MPI_SUM, root, comm);
  return recvbuf;
 }
 
-double MPISum(double& sendbuf, int root,  const MPI_Comm& comm)
+double MPISum(const double& sendbuf, int root,  const MPI_Comm& comm)
 {
  double recvbuf=0;
  MPI_Reduce(&sendbuf, &recvbuf, 1 , MPI_DOUBLE, MPI_SUM, root, comm);
  return recvbuf;
 }
 
-complex<float> MPISum(complex<float>& sendbuf, int root,  const MPI_Comm& comm)
+complex<float> MPISum(const complex<float>& sendbuf, int root,  const MPI_Comm& comm)
 {
  complex<float> recvbuf={0,0};
  MPI_Reduce(&sendbuf, &recvbuf, 1 , MPI_COMPLEX, MPI_SUM, root, comm);
  return recvbuf;
 }
 
-complex<double> MPISum(complex<double>& sendbuf, int root,  const MPI_Comm& comm)
+complex<double> MPISum(const complex<double>& sendbuf, int root,  const MPI_Comm& comm)
 {
  complex<double> recvbuf={0,0};
  MPI_Reduce(&sendbuf, &recvbuf, 1 , MPI_DOUBLE_COMPLEX, MPI_SUM, root, comm);
@@ -122,12 +122,12 @@ complex<double> MPISum(complex<double>& sendbuf, int root,  const MPI_Comm& comm
 } 
 
 
-void MPIGather(double& sendbuf, double* recvbuf, int root, const MPI_Comm& comm)
+void MPIGather(const double& sendbuf, double* recvbuf, int root, const MPI_Comm& comm)
 {
  MPI_Gather(&sendbuf,1,MPI_DOUBLE,recvbuf,1,MPI_DOUBLE,root,comm);
 }
 
-void MPIGather(complex<double>& sendbuf, complex<double>* recvbuf, int root, const MPI_Comm& comm)
+void MPIGather(const complex<double>& sendbuf, complex<double>* recvbuf, int root, const MPI_Comm& comm)
 {
  MPI_Gather(&sendbuf,1,MPI_DOUBLE_COMPLEX,recvbuf,1,MPI_DOUBLE_COMPLEX,root,comm);
 }
