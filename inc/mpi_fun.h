@@ -42,6 +42,9 @@ int MPISize();
 int MPIRank();
 void MPIBarrier();
 void MPIFinalize();
+template<class T> void MPIBcast(const T & buffer) {}
+template<class T> T MPISum(const T & sendbuf) {return sendbuf;}
+
 #endif  //For MPI and Serial 
 
 

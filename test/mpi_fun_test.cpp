@@ -219,7 +219,13 @@ void mpi_fun_test()
 #else
 void mpi_fun_test()
 {
+ complex<double> buffer(1.9,2.3);
  if(MPISize()!=1) cout<<"Warning!!!!MPISize failed the serial test!"<<endl;
  if(MPIRank()!=0) cout<<"Warning!!!!MPIRank failed the serail test!"<<endl;
+
+ MPIBcast(buffer);
+ if( abs(buffer-complex<double>(1.9,2.3))>1e-12 ) cout<<"Warning!!!!MPIBcast failed the serial test!"<<endl;
+ if( abs(MPISum(buffer)-complex<double>(1.9,2.3))>1e-12 ) cout<<"Warning!!!!MPISum failed the serial test!"<<endl;
+
 }
 #endif 
