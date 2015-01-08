@@ -1,3 +1,4 @@
+#include <iostream>
 #include "mpi_fun.h"
 
 #ifdef MPI_HAO
