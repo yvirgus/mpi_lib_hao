@@ -48,7 +48,7 @@ void MPIBarrier();
 void MPIFinalize();
 template<class T> void MPIBcast(const T & buffer) {}
 template<class T> T MPISum(const T & sendbuf) {return sendbuf;}
-
+template<class T> void MPISum(int N, const T* sendbuf, T* recvbuf) { std::copy(sendbuf, sendbuf+N, recvbuf); }
 #endif  //For MPI and Serial 
 
 

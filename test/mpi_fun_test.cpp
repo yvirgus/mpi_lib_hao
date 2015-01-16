@@ -281,6 +281,7 @@ void mpi_fun_test()
 #else
 void mpi_fun_test()
 {
+    int flag;
     complex<double> buffer(1.9,2.3);
     if(MPISize()!=1) cout<<"Warning!!!!MPISize failed the serial test!"<<endl;
     if(MPIRank()!=0) cout<<"Warning!!!!MPIRank failed the serail test!"<<endl;
@@ -289,5 +290,10 @@ void mpi_fun_test()
     if( abs(buffer-complex<double>(1.9,2.3))>1e-12 ) cout<<"Warning!!!!MPIBcast failed the serial test!"<<endl;
     if( abs(MPISum(buffer)-complex<double>(1.9,2.3))>1e-12 ) cout<<"Warning!!!!MPISum failed the serial test!"<<endl;
 
+    complex<double> a[3]={{2,3},{1,5},{7,8}};
+    complex<double> b[3]={};
+    MPISum(3,a,b);
+    flag=0; for(int i=0; i<3; i++) { if( abs(a[i]-b[i])>1e-12 ) flag++;}   
+    if(flag!=0) cout<<"Warning!!!!MPISum failed the serial pointer test!"<<endl;
 }
 #endif 
