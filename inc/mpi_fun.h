@@ -33,6 +33,10 @@ double               MPISum(const double               & sendbuf, int root=0, co
 std::complex<float>  MPISum(const std::complex<float>  & sendbuf, int root=0, const MPI_Comm& comm=MPI_COMM_WORLD);
 std::complex<double> MPISum(const std::complex<double> & sendbuf, int root=0, const MPI_Comm& comm=MPI_COMM_WORLD);
 
+void MPISum(int N, const double* sendbuf, double* recvbuf, int root=0, const MPI_Comm& comm=MPI_COMM_WORLD);
+void MPISum(int N, const std::complex<double>* sendbuf, std::complex<double>* recvbuf, 
+                                      int root=0, const MPI_Comm& comm=MPI_COMM_WORLD);
+
 void MPIGather(const double& sendbuf, double* recvbuf, int root=0, const MPI_Comm& comm=MPI_COMM_WORLD);
 void MPIGather(const std::complex<double>& sendbuf, std::complex<double>* recvbuf, int root=0, const MPI_Comm& comm=MPI_COMM_WORLD);
 #else
