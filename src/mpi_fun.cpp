@@ -122,6 +122,16 @@ complex<double> MPISum(const complex<double>& sendbuf, int root,  const MPI_Comm
     return recvbuf;
 } 
 
+void MPISum(int N, const double* sendbuf, double* recvbuf, int root, const MPI_Comm& comm)
+{
+    MPI_Reduce(sendbuf, recvbuf, N , MPI_DOUBLE, MPI_SUM, root, comm);
+}
+
+void MPISum(int N, const complex<double>* sendbuf, complex<double>*recvbuf, int root, const MPI_Comm& comm)
+{
+    MPI_Reduce(sendbuf, recvbuf, N , MPI_DOUBLE_COMPLEX, MPI_SUM, root, comm);
+}
+
 
 void MPIGather(const double& sendbuf, double* recvbuf, int root, const MPI_Comm& comm)
 {

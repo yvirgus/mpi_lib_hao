@@ -153,6 +153,65 @@ void MPISum_complex_double_test()
       {if(abs(sum)>1e-12) cout<<"Warning!!!!MPISum failed the complex double test! rank: "<<MPIRank()<<endl;}
 }
 
+
+void MPISum_double_pointer_test()
+{   
+    double s[3]={2,3,5};
+    double r[3]={0,0,0};
+    MPISum(3,s,r);
+    
+    if(MPIRank()==0)
+    {
+        int flag=0;
+        for(int i=0; i<3; i++)
+        {   
+            if( abs( r[i]-s[i]*static_cast<double>(MPISize()) ) > 1e-12) flag++;
+        }
+        if(flag!=0) cout<<"Warning!!!!MPISum failed the double pointer test! rank: "<<0<<endl;
+    }
+    else
+    {
+        int flag=0;
+        for(int i=0; i<3; i++)
+        {   
+            if( abs( r[i] ) > 1e-12) flag++;
+        }
+       if(flag!=0) cout<<"Warning!!!!MPISum failed the double pointer test! rank: "<<MPIRank()<<endl;
+
+    }
+ 
+}
+
+
+void MPISum_complex_double_pointer_test()
+{
+    complex<double> s[3]={{2,3},{1,5},{7,8}};
+    complex<double> r[3]={{0,0},{0,0},{0,0}};
+    MPISum(3,s,r);
+    
+    if(MPIRank()==0)
+    {
+        int flag=0;
+        for(int i=0; i<3; i++)
+        {
+            if( abs( r[i]-s[i]*static_cast<double>(MPISize()) ) > 1e-12) flag++;
+        }
+        if(flag!=0) cout<<"Warning!!!!MPISum failed the complex double pointer test! rank: "<<0<<endl;
+    }
+    else
+    {
+        int flag=0;
+        for(int i=0; i<3; i++)
+        {
+            if( abs( r[i] ) > 1e-12) flag++;
+        }
+       if(flag!=0) cout<<"Warning!!!!MPISum failed the complex double pointer test! rank: "<<MPIRank()<<endl;
+
+    }
+   
+}
+
+
 void MPIGather_double_test()
 {
     double i=MPIRank();
@@ -211,6 +270,9 @@ void mpi_fun_test()
     MPISum_double_test();
     MPISum_complex_float_test();
     MPISum_complex_double_test();
+
+    MPISum_double_pointer_test();
+    MPISum_complex_double_pointer_test();
    
     MPIGather_double_test();
     MPIGather_complex_double_test();
