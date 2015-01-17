@@ -1,5 +1,6 @@
 #ifndef MPI_FUN_HAO
 #define MPI_FUN_HAO
+#include <algorithm> 
 
 #ifdef MPI_HAO
 #include <mpi.h>
