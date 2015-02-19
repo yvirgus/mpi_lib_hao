@@ -10,9 +10,9 @@ int main(int argc, char** argv)
     MPIInitFunnel(argc,argv);
 
 #ifdef MPI_HAO
-    if(MPIRank()==0) cout<<"Testing mpi_lib_hao mpi version......\n"<<endl;
+    if(MPIRank()==0) cout<<"\n\n\n=======Testing mpi_lib_hao mpi version=======\n"<<endl;
 #else
-    if(MPIRank()==0) cout<<"Testing mpi_lib_hao serial version......\n"<<endl;
+    if(MPIRank()==0) cout<<"\n\n\n=======Testing mpi_lib_hao serial version=======\n"<<endl;
 #endif
 
     mpi_fun_test();
