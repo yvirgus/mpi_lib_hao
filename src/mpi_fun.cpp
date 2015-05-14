@@ -19,6 +19,10 @@ int MPIRank(const MPI_Comm& comm) {int rank;MPI_Comm_rank(comm, &rank);return ra
 void MPIBarrier(const MPI_Comm& comm) {MPI_Barrier(comm);}
 void MPIFinalize() {MPI_Finalize();}
 
+void MPIAbort(int errcode, const MPI_Comm &comm)
+{
+    MPI_Abort(comm, errcode);
+}
 
 void MPIBcast(int& buffer, int root, const MPI_Comm& comm )
 {
