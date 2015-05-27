@@ -10,7 +10,7 @@ void MPIInitFunnel(int& argc,char** & argv)
     int provided; MPI_Init_thread(&argc,&argv,MPI_THREAD_FUNNELED,&provided);
     if(provided!=MPI_THREAD_FUNNELED)
     {
-        if(MPIRank()==0) std::cout<<"WARNING!!!!The Marchine does not supply MPI_THREAD_FUNNELED, only supply to: "
+        if(MPIRank()==0) std::cout<<"WARNING!!!!The machine does not supply MPI_THREAD_FUNNELED, only supply to: "
                                   <<provided<<"-th level!"<<std::endl;
     }
 }
